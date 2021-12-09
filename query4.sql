@@ -1,17 +1,6 @@
-SELECT 
-    c.last_name,
-    c.first_name,
-    o.order_date,
-    p.product_name,
-    oi.item_price,
-    oi.discount_amount,
-    oi.quantity
-FROM
-    customers c
-        INNER JOIN
-    orders o ON c.customer_id = o.customer_id
-        INNER JOIN
-    order_items oi ON o.order_id = oi.order_id
-        INNER JOIN
-    products p ON oi.product_id = p.product_id
-ORDER BY c.last_name , o.order_date , p.product_name
+SELECT  
+LPAD(p_id,5,'p_id ') as projectid,
+LPAD(c_id,7,'c_id ') as consultantid,
+TRUNCATE(DATEDIFF(roll_off_date,roll_on_date)/30.4, 0) as month
+
+FROM project_consultant

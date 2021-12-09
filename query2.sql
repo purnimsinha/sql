@@ -1,14 +1,7 @@
-SELECT 
-    first_name,
-   last_name,
-    line1,
-    city,
-    state,
-    zip_code
+SELECT  order_date,
+DATE_FORMAT(order_date,'%Y') AS 'year',
+DATE_FORMAT(order_date,'%m/%d/%y') AS 'MM/DD/YY',
+DATE_FORMAT(order_date,'%h:%i %p') AS 'time_of_order',
+DATE_FORMAT(order_date,'%m/%d/%y %h:%i') AS'MM/DD/YY_and_time_of_order'
 
-FROM
-    customers AS c
-        INNER JOIN
-    addresses AS a ON c.customer_id = a.customer_id
-WHERE
-    c.email_address = 'allan.sherwood@yahoo.com'
+FROM orders

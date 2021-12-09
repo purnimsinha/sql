@@ -1,14 +1,5 @@
-SELECT 
-   first_name,
-    last_name,
-    line1,
-    city,
-    state,
-    zip_code
-FROM
-    customers AS c
-        INNER JOIN
-    addresses AS a ON c.customer_id = a.customer_id
-WHERE
-    (c.customer_id = a.customer_id)
-        AND (c.shipping_address_id = a.address_id)
+SELECT round( AVG(e.score),2) as average, CONCAT(c.c_first, " ", c.c_last) as name FROM  consultant as c 
+
+INNER JOIN evaluation as e on e.evaluatee_id = c.c_id
+
+WHERE c.c_id=105
