@@ -1,1 +1,17 @@
-SELECT product_name, list_price, discount_percent, Round(((discount_percent/100)*list_price), 2) as discount_amount, Round((list_price-(discount_percent/100)*list_price),2) as discount_price FROM products ORDER by discount_price DESC LIMIT 5
+SELECT 
+    c.last_name,
+    c.first_name,
+    o.order_date,
+    p.product_name,
+    oi.item_price,
+    oi.discount_amount,
+    oi.quantity
+FROM
+    customers c
+        INNER JOIN
+    orders o ON c.customer_id = o.customer_id
+        INNER JOIN
+    order_items oi ON o.order_id = oi.order_id
+        INNER JOIN
+    products p ON oi.product_id = p.product_id
+ORDER BY c.last_name , o.order_date , p.product_name

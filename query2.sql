@@ -1,1 +1,14 @@
-SELECT CONCAT(last_name, ', ', first_name) AS full_name FROM customers WHERE last_name REGEXP '^[M-Z]' ORDER BY last_name ASC
+SELECT 
+    first_name,
+   last_name,
+    line1,
+    city,
+    state,
+    zip_code
+
+FROM
+    customers AS c
+        INNER JOIN
+    addresses AS a ON c.customer_id = a.customer_id
+WHERE
+    c.email_address = 'allan.sherwood@yahoo.com'
